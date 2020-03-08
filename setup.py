@@ -1,9 +1,14 @@
 from setuptools import setup, find_packages
  
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name                = 'tistory-uploader',
-    version             = '0.1',
+    version             = '0.11',
     description         = 'markdown file uploader for tistory',
+    long_description    = long_description,
+    long_description_content_type   =   "text/markdown",
     author              = 'momentjin',
     author_email        = 'momentjin@gmail.com',
     url                 = 'https://github.com/momentjin/tistory-uploader',
