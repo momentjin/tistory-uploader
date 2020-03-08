@@ -1,23 +1,21 @@
-import Tistory
+import tistory
 import click
 import os
-import UserInfo
+import user_info
 from pathlib import Path
 import json
 
-@click.group()
-def cli():
-    pass
+FILE_NAME = 'user.json'
 
 @click.command()
 def init():
 
-    is_exist = os.path.isfile('user.json')
+    is_exist = os.path.isfile(FILE_NAME)
     if is_exist:
-        os.popen('code user.json')
+        os.popen('code {name}'.format(name=FILE_NAME))
         return
 
-    with open('user.json', "w") as json_file: 
+    with open(FILE_NAME, "w") as json_file: 
         json_file.write(json.dumps({
             "blog_name": "",
             "client_id": "",
@@ -26,16 +24,16 @@ def init():
             "categories": []
         }, indent = 4)) 
 
-    os.popen('code user.json')
+    os.popen('code {name}'.format(name=FILE_NAME))
 
 @click.command()
 def token():
-    Tistory.getAccessToken()
+    tistory.getAccessToken()
     return
 
 @click.command()
 def category():
-    response = Tistory.getCategories()
+    response = tistory.getCategories()
     data = json.loads(response.text)
     categories = data['tistory']['item']['categories']
     my_categories = []
@@ -47,7 +45,7 @@ def category():
             
         my_categories.append(a) 
 
-    UserInfo.write_categories(my_categories)
+    user_info.write_categories(my_categories)
     return
 
 @click.command()
@@ -62,13 +60,13 @@ def write(category, file):
     }
 
     if category == None:
-        Tistory.writePost(req)
+        tistory.writePost(req)
         return
 
     try:
-        categoryId = UserInfo.get_category_id_by_name(category)
+        categoryId = user_info.get_category_id_by_name(category)
         req['category'] = categoryId
-        Tistory.writePost(req)
+        tistory.writePost(req)
     except:
         print('카테고리 정보를 확인해주세요. (user.json)')
 
@@ -86,17 +84,21 @@ def modify(category, id, file):
     }
 
     if category == None:
-        Tistory.modifyPost(req)
+        tistory.modifyPost(req)
         return
 
     try:
-        categoryId = UserInfo.get_category_id_by_name(category)
+        categoryId = user_info.get_category_id_by_name(category)
         req['category'] = categoryId
-        Tistory.modifyPost(req)
+        tistory.modifyPost(req)
     except:
         print('카테고리 정보를 확인해주세요. (user.json)')
 
+# ---------------------------------------------------------
 
+@click.group()
+def cli():
+    pass
 
 cli.add_command(init)
 cli.add_command(category)
