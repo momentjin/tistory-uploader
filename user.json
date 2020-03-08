@@ -1,0 +1,23 @@
+{
+    "blog_name": "momentjin",
+    "client_id": "2b3bf018849b2988b5923393cad89d8d",
+    "client_secret": "2b3bf018849b2988b5923393cad89d8d1834ebb480a086623a04dc92ec72d4415e55debc",
+    "access_token": "8bf12024375eea7a1e2845b1bf7b4006_1e9a9cb6ba27707d82c1d100e9bc742e",
+    "categories": [{
+            "id": "848090",
+            "name": "Java"
+        },
+        {
+            "id": "848091",
+            "name": "Spring"
+        },
+        {
+            "id": "848092",
+            "name": "AWS"
+        },
+        {
+            "id": "826070",
+            "name": "Books"
+        }
+    ]
+}
