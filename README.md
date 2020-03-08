@@ -111,7 +111,11 @@ $ ~/tistory-uploader python CommandConfig modify [category_name] [file_path] -cg
 
 2. 출력 값에 포함된 url에 접속해서 게시글이 제대로 수정되었는지 확인합니다.
 
+## Release History
 
+v0.1
+- 2020.03.08
+- Work in progress
 
 ## License
 
