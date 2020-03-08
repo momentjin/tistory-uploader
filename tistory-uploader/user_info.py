@@ -33,7 +33,7 @@ def get_category_id_by_name(name):
         if c['name'] == name:
             return c['id']
     
-    raise Exception('고딴거 없습니다')
+    raise Exception('not found category {name}'.format(name=name))
 
 # --------------------------------------------------
 
