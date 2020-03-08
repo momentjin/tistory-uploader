@@ -24,7 +24,7 @@ $ cd tistory-uploader
 
 [티스토리 App 등록 페이지](https://www.tistory.com/guide/api/manage/register)에서 아래와 같이 서비스URL과 CallBack 값을 설정해주세요.
 
-![config](./resource/config.png)
+![config](https://user-images.githubusercontent.com/33324731/76165339-a1c2a500-6199-11ea-8c9c-49714c079f1f.png)
 
 ### User Info 설정
 
@@ -61,7 +61,7 @@ $ ~/tistory-uploader python CommandConfig code
 
 2. 다음 화면에서 블로그 업로드 권한을 얻기 위해 `허가하기` 버튼을 눌러주시면 됩니다.
 
-![authorization](./resource/authorization.png)
+![authorization](https://user-images.githubusercontent.com/33324731/76165333-9cfdf100-6199-11ea-8a09-c8cb2aed6af3.png)
 
 3. `user.json`에 access_token이 입력된 것을 확인합니다. (현재 문제가 있어 오류 메세지가 보일 수 있습니다. 무시하면 됩니다)
 
