@@ -77,6 +77,3 @@ def getAccessToken():
     CallBackServer.run(processToken)
     authorize_url = CODE_URL+'?'+params
     webbrowser.open(authorize_url)
-
-
-getAccessToken()
