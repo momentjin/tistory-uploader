@@ -6,7 +6,7 @@ import sys
 from aiohttp import web
 import threading
 import asyncio
-import github
+import github_api
 import user_info
 import json
 import callback_server
@@ -41,7 +41,7 @@ def processToken(request):
 def writePost(req):
     req['access_token'] = user_info.get_access_token()
     req['blogName'] = user_info.get_blog_name()
-    req['content'] = github.toHtmlFromMarkdown(req['content'])
+    req['content'] = github_api.toHtmlFromMarkdown(req['content'])
 
     response = requests.post(WRITE_POST_API, data=req)
     print(response.text)
@@ -50,7 +50,7 @@ def writePost(req):
 def modifyPost(req):
     req['access_token'] = user_info.get_access_token()
     req['blogName'] = user_info.get_blog_name()
-    req['content'] = github.toHtmlFromMarkdown(req['content'])
+    req['content'] = github_api.toHtmlFromMarkdown(req['content'])
 
     response = requests.post(MODIFY_POST_API, data=req)
     print(response.text)

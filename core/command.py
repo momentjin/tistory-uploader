@@ -1,4 +1,4 @@
-import tistory
+import tistory_api
 import click
 import os
 import user_info
@@ -28,14 +28,14 @@ def init():
 
 @click.command()
 def token():
-    tistory.getAccessToken()
+    tistory_api.getAccessToken()
     return
 
 @click.command()
 def category():
-    response = tistory.getCategories()
+    response = tistory_api.getCategories()
     data = json.loads(response.text)
-    categories = data['tistory']['item']['categories']
+    categories = data['tistory_api']['item']['categories']
     my_categories = []
     for c in categories:
         a = {}
@@ -60,13 +60,13 @@ def write(category, file):
     }
 
     if category == None:
-        tistory.writePost(req)
+        tistory_api.writePost(req)
         return
 
     try:
         categoryId = user_info.get_category_id_by_name(category)
         req['category'] = categoryId
-        tistory.writePost(req)
+        tistory_api.writePost(req)
     except:
         print('카테고리 정보를 확인해주세요. (user.json)')
 
@@ -84,13 +84,13 @@ def modify(category, id, file):
     }
 
     if category == None:
-        tistory.modifyPost(req)
+        tistory_api.modifyPost(req)
         return
 
     try:
         categoryId = user_info.get_category_id_by_name(category)
         req['category'] = categoryId
-        tistory.modifyPost(req)
+        tistory_api.modifyPost(req)
     except:
         print('카테고리 정보를 확인해주세요. (user.json)')
 
