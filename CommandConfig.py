@@ -11,6 +11,21 @@ def cli():
 
 @click.command()
 def init():
+
+    is_exist = os.path.isfile('user.json')
+    if is_exist:
+        os.popen('code user.json')
+        return
+
+    with open('user.json', "w") as json_file: 
+        json_file.write(json.dumps({
+            "blog_name": "",
+            "client_id": "",
+            "client_secret": "",
+            "access_token": "",
+            "categories": []
+        }, indent = 4)) 
+
     os.popen('code user.json')
 
 @click.command()
