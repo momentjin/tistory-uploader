@@ -1,18 +1,21 @@
 # Markdown Tistory Uploader
 
-Markdown 타입의 파일을 Github CSS를 적용한 HTML파일로 변환해서 Tistory로 업로드하는 모듈입니다.
+Markdown 타입의 파일을 Github CSS를 적용한 HTML파일로 변환해서 Tistory로 업로드하는 모듈입니다. 
 
-## Pre-requirement
+## Prerequisites
 - VS Code
 - Python >= 3
 - Tistory github markdown style 설정
+    - css 파일은 [여기](https://github.com/sindresorhus/github-markdown-css)에서 다운로드
+    - tistory 설정은 구글링 부탁드립니다.
 
 ## Installation
 
-pip install은 준비중입니다..
+pip install은 지원되지 않습니다.
 
 ```shell
 $ git clone https://github.com/momentjin/tistory-uploader.git
+$ cd tistory-uploader
 ```
 
 ## Usage
@@ -74,6 +77,8 @@ $ ~/tistory-uploader python CommandConfig category
 
 2. `user.json`에 categories 데이터가 입력된 것을 확인합니다.
 
+> 게시글 업로드시 카테고리는 카테고리 이름을 입력합니다. 카테고리 이름을 통해 user.json의 카테고리 정보에서 id를 획득한 뒤 이를 API로 전달하는 방식입니다.
+
 ### 글 쓰기
 
 1-1. (카테고리 정보가 필요 없는 경우) 아래 커맨드를 입력합니다.
@@ -92,16 +97,22 @@ $ ~/tistory-uploader python CommandConfig write [file_path] -cg [category_name]
 
 ### 글 수정
 
-1. (1) (카테고리 정보가 필요 없는 경우) 아래 커맨드를 입력합니다.
+1-1. (카테고리 정보가 필요 없는 경우) 아래 커맨드를 입력합니다.
 
 ```shell
-$ ~/tistory-uploader python CommandConfig modify [file_path]
+$ ~/tistory-uploader python CommandConfig modify [category_name] [file_path]
 ```
 
-1. (2) (카테고리 정보가 필요한 경우) 아래 커맨드를 입력합니다. `category_name`는 영문의 경우 대소문자를 명확히 구분해주세요.
+1-2. (카테고리 정보가 필요한 경우) 아래 커맨드를 입력합니다. `category_name`는 영문의 경우 대소문자를 명확히 구분해주세요.
 
 ```shell
-$ ~/tistory-uploader python CommandConfig modify [file_path] -cg [category_name]
+$ ~/tistory-uploader python CommandConfig modify [category_name] [file_path] -cg [category_name]
 ```
 
 2. 출력 값에 포함된 url에 접속해서 게시글이 제대로 수정되었는지 확인합니다.
+
+
+
+## License
+
+Distributed under the MIT License. See [LICENSE](https://github.com/momentjin/tistory-uploader/blob/master/LICENSE) for more information.
