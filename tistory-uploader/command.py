@@ -5,7 +5,7 @@ import user_info
 from pathlib import Path
 import json
 
-FILE_NAME = 'user.json'
+FILE_NAME = '../user.json'
 
 @click.command()
 def init():
@@ -35,7 +35,7 @@ def token():
 def category():
     response = tistory_api.getCategories()
     data = json.loads(response.text)
-    categories = data['tistory_api']['item']['categories']
+    categories = data['tistory']['item']['categories']
     my_categories = []
     for c in categories:
         a = {}

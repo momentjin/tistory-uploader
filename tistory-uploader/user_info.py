@@ -1,6 +1,6 @@
 import json
 
-FILE_NAME = 'user.json'
+FILE_NAME = '../user.json'
 
 def read_user_info():
     with open(FILE_NAME) as json_file:
